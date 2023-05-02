@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Main from './components/Main';
 import Nav from './components/Nav';
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
 		setScore(score + 1);
 	};
 
-	const incremetHighScore = () => {
+	const incrementHighScore = () => {
 		if (score > highScore) {
 			setHighScore(score + 1);
 		}
@@ -22,6 +23,11 @@ const App = () => {
 	return (
 		<div>
 			<Nav score={score} highScore={highScore} />
+			<Main
+				incrementScore={incrementScore}
+				incrementHighScore={incrementHighScore}
+				clearScore={clearScore}
+			/>
 		</div>
 	);
 };
