@@ -1,7 +1,12 @@
 import React from 'react';
+import Nav from './components/Nav';
 
 const App = () => {
-	return <div className="text-3xl text-green-500">Hello World</div>;
+	return (
+		<div>
+			<Nav />
+		</div>
+	);
 };
 
 export default App;
