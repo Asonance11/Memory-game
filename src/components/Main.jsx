@@ -25,10 +25,11 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 		brook,
 		jinbei,
 	]);
-	const [displayedImages, setdisplayedImages] = useState([]);
+	const [displayedImages, setDisplayedImages] = useState([]);
+	const [selectedImages, setSelectedImages] = useState([]);
 
 	useEffect(() => {
-		setdisplayedImages(selectRandomImages(images, 6));
+		setDisplayedImages(selectRandomImages(images, 6));
 	}, []);
 
 	const selectRandomImages = (arr, num) => {
@@ -52,14 +53,24 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 		<div
 			key={index}
 			id={item}
-			title="card"
 			style={{ backgroundImage: 'url(' + item + ')' }}
-			className=" rounded h-full w-full cursor-pointer bg-no-repeat bg-contain  object-cover"
+			className=" h-full w-full cursor-pointer bg-no-repeat bg-contain bg-center  object-cover"
+			onClick={(e) => {
+				setDisplayedImages(selectRandomImages(images, 6));
+				if (!selectedImages.includes(e.target.id)) {
+					setSelectedImages(selectedImages.concat(e.target.id));
+					incrementScore();
+					incrementHighScore();
+				} else {
+					setSelectedImages([]);
+					clearScore();
+				}
+			}}
 		></div>
 	));
 
 	return (
-		<main className=" grid grid-cols-3 grid-rows-2 gap-4 p-8 bg-slate-900 items-center h-[90vh]">
+		<main className=" grid gap-4 grid-cols-3 grid-rows-2  p-8 bg-slate-900 items-center h-[90vh]">
 			{loadedImages}
 		</main>
 	);
