@@ -26,6 +26,17 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 		jinbei,
 	]);
 
+	const selectRandomImage = (arr) => {
+		let randomIndex;
+		let item;
+
+		randomIndex = Math.floor(Math.random() * arr.length);
+
+		item = arr[randomIndex];
+
+		console.log(item);
+	};
+
 	return <div>Main</div>;
 };
 
