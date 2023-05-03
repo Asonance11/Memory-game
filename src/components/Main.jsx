@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	brook,
 	chopper,
@@ -25,6 +25,11 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 		brook,
 		jinbei,
 	]);
+	const [displayedImages, setdisplayedImages] = useState([]);
+
+	useEffect(() => {
+		setdisplayedImages(selectRandomImage(images));
+	}, []);
 
 	const selectRandomImage = (arr) => {
 		let randomIndex;
