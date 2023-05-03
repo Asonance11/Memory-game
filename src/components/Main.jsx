@@ -44,10 +44,25 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 				count++;
 			}
 		}
-		console.log(items);
+
+		return items;
 	};
 
-	return <div>Main</div>;
+	const loadedImages = displayedImages.map((item, index) => (
+		<div
+			key={index}
+			id={item}
+			title="card"
+			style={{ backgroundImage: 'url(' + item + ')' }}
+			className=" rounded h-full w-full cursor-pointer bg-no-repeat bg-contain  object-cover"
+		></div>
+	));
+
+	return (
+		<main className=" grid grid-cols-3 grid-rows-2 gap-4 p-8 bg-slate-900 items-center h-[90vh]">
+			{loadedImages}
+		</main>
+	);
 };
 
 export default Main;
