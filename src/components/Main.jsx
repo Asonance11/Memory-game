@@ -28,18 +28,23 @@ const Main = ({ incrementScore, incrementHighScore, clearScore }) => {
 	const [displayedImages, setdisplayedImages] = useState([]);
 
 	useEffect(() => {
-		setdisplayedImages(selectRandomImage(images));
+		setdisplayedImages(selectRandomImages(images, 6));
 	}, []);
 
-	const selectRandomImage = (arr) => {
+	const selectRandomImages = (arr, num) => {
 		let randomIndex;
-		let item;
+		let items = [];
+		let count = 0;
 
-		randomIndex = Math.floor(Math.random() * arr.length);
+		while (count < num) {
+			randomIndex = Math.floor(Math.random() * arr.length);
 
-		item = arr[randomIndex];
-
-		console.log(item);
+			if (!items.includes(arr[randomIndex])) {
+				items.push(arr[randomIndex]);
+				count++;
+			}
+		}
+		console.log(items);
 	};
 
 	return <div>Main</div>;
